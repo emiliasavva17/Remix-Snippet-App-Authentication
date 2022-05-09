@@ -1,0 +1,411 @@
+body {
+  font-family: "Roboto", sans-serif;
+
+  color: #ededed;
+  font-weight: 300;
+}
+
+main {
+  width: 100vw;
+  height: calc(100vh - 50px);
+}
+//
+#window-wrapper {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+  padding-top: 50px;
+  background-color: #212121;
+}
+
+/* top header ------------------------------------------ */
+#header {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 3px 3px 3px #000;
+  z-index: 20;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #212121;
+}
+
+#header h1 {
+  font-size: 20px;
+  font-weight: 500;
+  margin-left: 20px;
+}
+
+#header button {
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  box-shadow: 1px 1px 3px #000;
+  background-color: #1a605f;
+  margin-right: 20px;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: 500;
+}
+
+#header button:hover {
+  box-shadow: 1px 1px 5px #000;
+  cursor: pointer;
+}
+
+/* category ------------------------------------------ */
+#category-section {
+  width: 12%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: scroll;
+  background-color: #212121;
+  justify-content: center;
+  align-items: center;
+}
+
+#category-section div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 20px 10px;
+}
+
+#category-section div h3 {
+  font-size: 18px;
+  color: #d4d4d4;
+}
+
+#category-section div h3:hover {
+  cursor: pointer;
+  text-shadow: 5px 5px 5px #000;
+  color: #fff;
+}
+
+#category-section div h3 a {
+  text-decoration: none;
+}
+
+/* overview ------------------------------------------ */
+
+#overview-section {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background-color: #2e2d2d;
+  box-shadow: inset 3px 3px 15px #000;
+}
+
+#overview-section .list-item {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+#overview-section .list-item:hover {
+  box-shadow: inset 1px 1px 5px #000;
+  cursor: pointer;
+}
+
+#overview-section .list-item a {
+  font-size: 16px;
+  text-align: left;
+  text-decoration: none;
+  width: 100%;
+  height: 100%;
+  padding: 20px 20px;
+}
+
+#overview-section .search-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 20px 10px;
+  flex-direction: column;
+}
+
+#overview-section .search-wrapper form {
+  width: 100%;
+  height: 100%;
+}
+
+#overview-section .search-wrapper form input {
+  width: 75%;
+  height: 20px;
+
+  box-shadow: inset 1px 1px 5px #000;
+  border: none;
+  background-color: #383737;
+  padding: 10px;
+  border-radius: 30px;
+}
+
+#overview-section .search-wrapper form button {
+  background-color: transparent;
+  width: 10%;
+  border: none;
+  outline: none;
+  margin-left: 5px;
+}
+
+#overview-section .search-wrapper button:hover {
+  cursor: pointer;
+}
+
+#overview-section .filter-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-top: 10px;
+}
+#overview-section .filter-container form button {
+  background-color: transparent;
+  width: 10%;
+  border: none;
+  outline: none;
+  margin-left: 5px;
+}
+
+#overview-section .filter-container form button:hover {
+  cursor: pointer;
+}
+
+#overview-section .filter-container form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+#overview-section .filter-container form input,
+#overview-section .filter-container form select {
+  padding: 10px;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  background-color: #383737;
+  box-shadow: inset 1px 1px 5px #000;
+  border: none;
+  outline: none;
+}
+
+#overview-section .filter-container form select {
+  background-image: linear-gradient(45deg, transparent 50%, gray 50%),
+    linear-gradient(135deg, gray 50%, transparent 50%),
+    linear-gradient(to right, #ccc, #ccc);
+  background-position: calc(100% - 20px) calc(1em + 3px),
+    calc(100% - 15px) calc(1em + 3px), calc(100% - 2.5em) 5em;
+  background-size: 5px 5px, 5px 5px, 1px 1.5em;
+  background-repeat: no-repeat;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+#overview-section .filter-container form select:focus {
+  background-image: linear-gradient(45deg, white 50%, transparent 50%),
+    linear-gradient(135deg, transparent 50%, white 50%),
+    linear-gradient(to right, #ccc, #ccc);
+  background-position: calc(100% - 15px) 1em, calc(100% - 20px) 1em,
+    calc(100% - 2.5em) 5em;
+  background-size: 5px 5px, 5px 5px, 1px 1.5em;
+  background-repeat: no-repeat;
+  border-color: white;
+  outline: 0;
+}
+
+/* content ------------------------------------------ */
+
+#content-section {
+  width: 68%;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #bababa;
+  height: 100%;
+  overflow: scroll;
+  background-color: #212121;
+}
+
+#content-section .content-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 50px;
+}
+
+#content-section .content-wrapper h1 {
+  margin-bottom: 20px;
+}
+
+#content-section .content-wrapper p {
+  margin-bottom: 50px;
+  font-weight: 100;
+}
+
+#content-section .code-wrapper {
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  width: 95%;
+  height: 100%;
+  background-color: #272727;
+  box-shadow: inset 1px 1px 5px 3px #141414;
+}
+
+#content-section .code-wrapper .button-wrapper {
+  margin-left: auto;
+  width: 5%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: start;
+}
+
+#content-section .code-wrapper .button-wrapper button {
+  background: none;
+  border: none;
+  outline: none;
+  font-weight: 500;
+}
+#content-section .code-wrapper .button-wrapper button:hover {
+  cursor: pointer;
+}
+
+.buttons-wrapper {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+.buttons-wrapper button {
+  margin-left: 10px;
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+
+  font-weight: 500;
+  box-shadow: 1px 1px 3px #000;
+  background-color: #1a605f;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.buttons-wrapper button:hover {
+  box-shadow: 1px 1px 5px #000;
+  cursor: pointer;
+}
+
+#fav_icon {
+  background-color: #464646;
+}
+
+.favToggle {
+  background-color: #1e8e8c !important;
+}
+
+/* add new ------------------------------------------ */
+
+#add-new-section {
+  width: 68%;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #bababa;
+  height: 100%;
+  overflow: scroll;
+  background-color: #212121;
+}
+
+#add-new-section form {
+}
+
+#add-new-section .content-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 50px;
+}
+
+#add-new-section .content-wrapper h1 {
+  margin-bottom: 50px;
+}
+
+#add-new-section form input,
+#add-new-section form textarea,
+#add-new-section form select {
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  width: 95%;
+  background-color: #272727;
+  box-shadow: inset 1px 1px 5px 3px #141414;
+  border: none;
+  outline: none;
+}
+
+#add-new-section form select {
+  width: 30%;
+
+  background-image: linear-gradient(45deg, transparent 50%, gray 50%),
+    linear-gradient(135deg, gray 50%, transparent 50%),
+    linear-gradient(to right, #ccc, #ccc);
+  background-position: calc(100% - 20px) calc(1em + 10px),
+    calc(100% - 15px) calc(1em + 10px), calc(100% - 2.5em) 5em;
+  background-size: 5px 5px, 5px 5px, 1px 1.5em;
+  background-repeat: no-repeat;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+#add-new-section form select:focus {
+  background-image: linear-gradient(45deg, white 50%, transparent 50%),
+    linear-gradient(135deg, transparent 50%, white 50%),
+    linear-gradient(to right, #ccc, #ccc);
+  background-position: calc(100% - 15px) 1.5em, calc(100% - 20px) 1.5em,
+    calc(100% - 2.5em) 5em;
+  background-size: 5px 5px, 5px 5px, 1px 1.5em;
+  background-repeat: no-repeat;
+  border-color: white;
+  outline: 0;
+}
+
+#add-new-section button {
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+
+  box-shadow: 1px 1px 3px #000;
+  background-color: #fff;
+  margin-right: 20px;
+  border-radius: 5px;
+  color: #212121;
+}
+
+#add-new-section button:hover {
+  box-shadow: 1px 1px 5px #000;
+  cursor: pointer;
+}
