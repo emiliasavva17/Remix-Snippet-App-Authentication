@@ -4,7 +4,7 @@ const MobileMenu = ({ toggle, handleClick }) => {
   console.log(handleClick);
   return (
     <button onClick={handleClick}>
-      {toggle ? <CgClose size={24} /> : <CgMenu size={24} />}
+      {toggle ? <CgClose size={22} /> : <CgMenu size={22} />}
     </button>
   );
 };

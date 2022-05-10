@@ -4,7 +4,7 @@ import { redirect } from "@remix-run/node";
 export async function action({ request }) {
   const session = await getSession(request.headers.get("Cookie"));
 
-  return redirect("./auth/login", {
+  return redirect("/login", {
     headers: {
       "Set-Cookie": await destroySession(session),
     },
@@ -12,5 +12,5 @@ export async function action({ request }) {
 }
 
 export function loader() {
-  return redirect("./auth/login");
+  return redirect("/login");
 }

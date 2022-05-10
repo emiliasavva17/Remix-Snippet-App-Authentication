@@ -1,7 +1,7 @@
 import { redirect } from "@remix-run/node";
 import { Link, Form, useLoaderData } from "@remix-run/react";
 import connectDb from "~/db/connectDb.server";
-import { requireUserSession } from "~/sessions.server";
+
 export async function loader({ params }) {
   const db = await connectDb();
   const snippet = await db.models.CodeSnippet.findById(params.snippetId);
@@ -9,17 +9,13 @@ export async function loader({ params }) {
   return snippet;
 }
 export async function action({ request }) {
-  const session = await requireUserSession(request);
-
   const body = await request.formData();
   var id = body.get("_id");
   var action = body.get("action");
   if (action == "delete") {
     const db = await connectDb();
-    if (session.has("userId")) {
-      db.models.CodeSnippet.findByIdAndDelete(id).exec();
-      return redirect("/");
-    } else alert("You cant delete this item");
+    db.models.CodeSnippet.findByIdAndDelete(id).exec();
+    return redirect("/");
   } else if (action == "fav_update") {
     const db = await connectDb();
     const snippet = await db.models.CodeSnippet.findById(id);
@@ -35,7 +31,7 @@ export async function action({ request }) {
   return null;
 }
 
-export default function Index() {
+export default function SnippetId() {
   async function copyToClipboard() {
     var copyText = document.getElementById("codeBox");
     var data = copyText.innerHTML;
@@ -52,9 +48,6 @@ export default function Index() {
       id="content-section"
       className="md:w-[68%] w-full flex flex-col  h-full overflow-y-auto "
     >
-      <Link to="/" className="inline-block mt-3 p-5 font-bold underline ">
-        Back
-      </Link>
       <div key={snippet._id}>
         <div className=" flex flex-col md:m-12 m-4 ">
           <h1 className=" mb-5 ">{snippet.title}</h1>

@@ -3,6 +3,8 @@ import { json, redirect } from "@remix-run/node";
 import { getSession, commitSession } from "~/sessions.server";
 import connectDb from "~/db/connectDb.server";
 import bcrypt from "bcryptjs";
+import CatchBoundary from "../components/CatchBoundary";
+import ErrorBoundary from "../components/ErrorBoundary";
 
 export async function action({ request }) {
   const session = await getSession(request.headers.get("Cookie"));
@@ -19,7 +21,7 @@ export async function action({ request }) {
     let checkPwd = bcrypt.compareSync(pwd, user.password);
     if (checkPwd) {
       session.set("userId", user._id);
-      return redirect("/login", {
+      return redirect("/", {
         headers: {
           "Set-Cookie": await commitSession(session),
         },
@@ -53,74 +55,68 @@ export default function LogIn() {
   if (userId) {
     return (
       <div>
-        <p>
-          You are already logged in as user id {} and length is {userId.length}
-        </p>
-
+        <h1>Congrats You are logged in</h1>
         <Link to="/" className="underline">
-          Go Home
+          Go to Your snippets
         </Link>
-
-        <Form method="post" action="/logout">
-          <button
-            type="submit"
-            className="bg-red-800 my-3 p-2 border rounded text-white"
-          >
-            Log Out
-          </button>
-        </Form>
       </div>
     );
   } else {
     return (
-      <div className="m-10 p-5 flex-col w-8/12  content-center justify-center  text-center border-2 border-teal-800 rounded ">
-        <h1 className="p-1">Log In</h1>
-        <br />
-        {acrtionData?.errorMessage ? (
-          <p
-            className="text-red-500 font-bold my-3"
-            // className={`p-2 rounded-md w-full ${
-            //       actionData?.errors.description
-            //         ? "border-2 border-red-500"
-            //         : null
-            //     }
-          >
-            {acrtionData.errorMessage}
-          </p>
-        ) : null}
-        <form method="post" className="">
-          <input
-            type="text"
-            name="username"
-            id="username"
-            placeholder="Username"
-            className="block my-3 border rounded px-2 py-1 w-full"
-          />
-
-          <input
-            type="password"
-            name="password"
-            id="password"
-            placeholder="password"
-            className="block my-3 border rounded px-2 py-1 w-full"
-          />
-
-          <div>
-            <button
-              type="submit"
-              className="my-3 p-2 border rounded text-white bg-teal-800"
+      <div className="flex  justify-around content-around ">
+        <div className="m-10  p-5 flex-col w-8/12  content-center justify-center  text-center border-2 border-teal-800 rounded ">
+          <h1 className="p-1">Log In</h1>
+          <br />
+          {acrtionData?.errorMessage ? (
+            <p
+              className="text-red-500 font-bold my-3"
+              // className={`p-2 rounded-md w-full ${
+              //       actionData?.errors.description
+              //         ? "border-2 border-red-500"
+              //         : null
+              //     }
             >
-              Log In
-            </button>
-            <p>
-              Don't have an account?
-              <Link to="/register" className="underline">
-                Register
-              </Link>{" "}
+              {acrtionData.errorMessage}
             </p>
-          </div>
-        </form>
+          ) : null}
+          <form method="post" className="">
+            <input
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Username"
+              className="block my-3 border rounded px-2 py-1 w-full"
+            />
+
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="password"
+              className="block my-3 border rounded px-2 py-1 w-full"
+            />
+
+            <div>
+              <button
+                type="submit"
+                className="my-3 p-2 border rounded text-white bg-teal-800"
+              >
+                Log In
+              </button>
+              <p>
+                Don't have an account?
+                <Link to="/register" className="underline">
+                  Register
+                </Link>
+              </p>
+            </div>
+          </form>
+        </div>
       </div>
     );
   }
+  // } else {
+  //   return redirect("/");
+  // }
 }
+export { CatchBoundary, ErrorBoundary };
