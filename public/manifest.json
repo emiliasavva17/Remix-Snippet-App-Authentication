@@ -1,0 +1,32 @@
+{
+    "name": "Snippify",
+    "short_name": "Snippify",
+    "theme_color": "#000",
+    "background_color": "#000",
+    "display": "standalone",
+    "scope": ".",
+    "start_url": "/",
+    "icons": [
+      {
+        "src": "/icons/maskable.png",
+        "sizes": "196x196",
+        "type": "image/png",
+        "purpose": "any maskable"
+      },
+      {
+        "src": "/icons/favicon-32x32.png",
+        "sizes": "32x32",
+        "type": "image/png"
+      },
+      {
+        "src": "/icons/apple-touch-icon.png",
+        "sizes": "72x72 96x96 128x128 256x256",
+        "type": "image/png"
+      },
+      {
+        "src": "/icons/android-chrome-192x192.png",
+        "sizes": "any",
+        "type": "image/png"
+      }
+    ]
+  }
