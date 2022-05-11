@@ -22,7 +22,7 @@ export async function action({ request }) {
     );
   }
   if (user) {
-    return json({ errorMessage: "this user alredy exists" }, { statrus: 401 });
+    return json({ errorMessage: "This user alredy exists" }, { statrus: 401 });
   } else if (
     form.get("password").trim() !== form.get("repeatPassword").trim()
   ) {
@@ -58,16 +58,16 @@ export async function loader({ request }) {
 // }
 export default function Register() {
   const { userId } = useLoaderData();
-  const acrtionData = useActionData();
+  const actionData = useActionData();
 
   if (!userId) {
     return (
-      <div className="flex  justify-around content-around ">
-        <div className="m-10 p-5 flex-col w-8/12  content-center justify-center  text-center border-2 border-teal-800 rounded ">
-          <h1 className="p-1">Register</h1>
+      <div className="flex justify-around content-around">
+        <div className="m-10 p-5 flex-col w-8/12 pb-32  content-center justify-center text-center border-2 border-teal-800 rounded ">
+          <h1 className="p-1 text-2xl font-bold">Register</h1>
           <br />
 
-          {acrtionData?.errorMessage ? (
+          {actionData?.errorMessage ? (
             <p
               className="text-red-500 font-bold my-2"
               // className={`p-2 rounded-md w-full ${
@@ -76,7 +76,7 @@ export default function Register() {
               //         : null
               //     }
             >
-              {acrtionData.errorMessage}
+              {actionData.errorMessage}
             </p>
           ) : null}
           <Form method="post" className="">
@@ -85,34 +85,34 @@ export default function Register() {
               name="username"
               id="username"
               placeholder="Username"
-              className="block my-3 border rounded px-2 py-1 w-full"
+              className="block text-black my-3 border rounded px-2 py-1 w-full"
             />
 
             <input
               type="password"
               name="password"
               id="password"
-              placeholder="password"
-              className="block my-3 border rounded px-2 py-1 w-full"
+              placeholder="Password"
+              className="block text-black my-3 border rounded px-2 py-1 w-full"
             />
 
             <input
               type="password"
               name="repeatPassword"
               id="repeatPassword"
-              placeholder="repeat password"
-              className="block my-3 border rounded px-2 py-1 w-full"
+              placeholder="Confirm password"
+              className="block text-black my-3 border rounded px-2 py-1 w-full"
             />
             <div>
               <button
                 type="submit"
-                className="my-3 p-2 border rounded text-white bg-teal-800"
+                className="my-3 p-2 border rounded text-white font-bold bg-teal-800"
               >
                 Register
               </button>
 
               <p>
-                Already have an account?
+                <span>Already have an account? </span> 
                 <Link to="/login" className="underline">
                   Log In
                 </Link>

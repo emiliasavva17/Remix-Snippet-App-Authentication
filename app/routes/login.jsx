@@ -47,7 +47,7 @@ function hashing(pwd) {
 }
 export default function LogIn() {
   const { userId } = useLoaderData();
-  const acrtionData = useActionData();
+  const actionData = useActionData();
   // console.log(userId);
   console.log("password    -> hash    ->", hashing("12345678"));
   let x = bcrypt.compareSync("12345678", hashing("12345678"));
@@ -64,10 +64,10 @@ export default function LogIn() {
   } else {
     return (
       <div className="flex  justify-around content-around ">
-        <div className="m-10  p-5 flex-col w-8/12  content-center justify-center  text-center border-2 border-teal-800 rounded ">
-          <h1 className="p-1">Log In</h1>
+        <div className="m-10 p-5 flex-col w-8/12  content-center justify-center  text-center border-2 border-teal-800 rounded ">
+          <h1 className="p-1 text-2xl font-bold">Log In</h1>
           <br />
-          {acrtionData?.errorMessage ? (
+          {actionData?.errorMessage ? (
             <p
               className="text-red-500 font-bold my-3"
               // className={`p-2 rounded-md w-full ${
@@ -76,7 +76,7 @@ export default function LogIn() {
               //         : null
               //     }
             >
-              {acrtionData.errorMessage}
+              {actionData.errorMessage}
             </p>
           ) : null}
           <form method="post" className="">
@@ -104,7 +104,7 @@ export default function LogIn() {
                 Log In
               </button>
               <p>
-                Don't have an account?
+                <span>Don't have an account? </span>
                 <Link to="/register" className="underline">
                   Register
                 </Link>
