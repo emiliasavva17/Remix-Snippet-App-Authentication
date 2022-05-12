@@ -15,7 +15,13 @@ function stringContainsNumber(_string) {
   }
 }
 function isUpper(str) {
-  return !/[a-z]/.test(str) && /[A-Z]/.test(str);
+var isUpperCase = false;
+  for (var i = 0; i < str.length; i++) {
+    if (/[A-Z]/.test(str[i])) {
+      isUpperCase = true;
+    }
+  }
+  return isUpperCase;
 }
 
 export async function action({ request }) {
