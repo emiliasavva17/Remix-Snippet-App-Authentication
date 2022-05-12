@@ -6,6 +6,18 @@ import bcrypt from "bcryptjs";
 import CatchBoundary from "~/components/CatchBoundary";
 import ErrorBoundary from "~/components/ErrorBoundary";
 
+function stringContainsNumber(_string) {
+  let matchPattern = _string.match(/\d+/g);
+  if (matchPattern != null) {
+    return true;
+  } else {
+    return false;
+  }
+}
+function isUpper(str) {
+  return !/[a-z]/.test(str) && /[A-Z]/.test(str);
+}
+
 export async function action({ request }) {
   const session = await getSession(request.headers.get("Cookie"));
   const db = await connectDb();
@@ -29,7 +41,26 @@ export async function action({ request }) {
     return json({ errorMessage: "Password didn't match" }, { statrus: 401 });
   } else if (form.get("password") === "") {
     return json({ errorMessage: "Type your password" }, { statrus: 401 });
-  } else if (form.get("password").trim() == form.get("repeatPassword").trim()) {
+  }else if (form.get("password").length < 3) {
+    return json(
+      { errorMessage: "Password shoud be longer then 3" },
+      { statrus: 401 }
+    );
+  } else if (!stringContainsNumber(form.get("password"))) {
+    return json(
+      { errorMessage: "Your password must contain at least one number" },
+      { statrus: 401 }
+    );
+  } else if (!isUpper(form.get("password"))) {
+    return json(
+      {
+        errorMessage:
+          "Your password must contain at least one Upper Case Character",
+      },
+      { statrus: 401 }
+    );
+  }
+   else if (form.get("password").trim() == form.get("repeatPassword").trim()) {
     let hash = form.get("password").trim();
     var pwd = bcrypt.hashSync(hash, 10);
     const newUser = await db.models.Users.create({

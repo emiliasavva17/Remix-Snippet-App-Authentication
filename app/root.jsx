@@ -17,7 +17,7 @@ import styles from "./styles/app.css";
 export function meta() {
   return {
     charset: "utf-8",
-    title: "New Snippet App",
+    title: "Snippify",
     viewport: "width=device-width,initial-scale=1",
   };
 }
@@ -47,7 +47,7 @@ export default function App() {
         <header className="border-b-2">
           <section id="main">
             <h2 className="text-center text-white mt-3 mb-2 text-2xl font-bold">
-              <a href="/">Snippet App</a>
+              <a href="/">Snippify</a>
             </h2>
           </section>
         </header>

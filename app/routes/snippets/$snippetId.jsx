@@ -50,18 +50,18 @@ export default function Index() {
   return (
     <div
       id="content-section"
-      className="md:w-[68%] w-full flex flex-col  h-full overflow-y-auto "
+      className="md:w-[68%]  w-full flex flex-col  h-full overflow-y-auto "
     >
       <Link to="/" className="inline-block mt-3 p-5 font-bold underline ">
         Back
       </Link>
       <div key={snippet._id}>
         <div className=" flex flex-col md:m-12 m-4 ">
-          <h1 className=" mb-5 ">{snippet.title}</h1>
-          <p className=" mb-12 font-medium ">{snippet.language}</p>
-          <p className=" mb-12 font-medium ">{snippet.description}</p>
+          <h1 className=" mb-5 text-3xl font-bold ">{snippet.title}</h1>
+          <p className=" mb-12 font-medium italic text-teal-600">{snippet.language}</p>
+          <p className=" mb-12 font-medium text-xl ">{snippet.description}</p>
 
-          <div className="p-5 rounded-xl flex w-[95%] h-full shadow-inner shadow-gray-900 mb-20 ">
+          <div className="p-5 rounded-xl flex w-[95%] bg-snippet-emerald h-full shadow-inner shadow-gray-900 mb-20 ">
             <pre className=" w-full break-words whitespace-pre-wrap ">
               <code>{snippet.code_snippet}</code>
             </pre>

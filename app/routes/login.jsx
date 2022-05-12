@@ -85,7 +85,7 @@ export default function LogIn() {
               name="username"
               id="username"
               placeholder="Username"
-              className="block my-3 border rounded px-2 py-1 w-full"
+              className="block my-3 border rounded text-black px-2 py-1 w-full"
             />
 
             <input
@@ -93,7 +93,7 @@ export default function LogIn() {
               name="password"
               id="password"
               placeholder="password"
-              className="block my-3 border rounded px-2 py-1 w-full"
+              className="block my-3 border rounded text-black px-2 py-1 w-full"
             />
 
             <div>
