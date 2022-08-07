@@ -51,15 +51,7 @@ export async function action({ request }) {
       { errorMessage: "Your password must contain at least one number" },
       { statrus: 401 }
     );
-  } else if (!isUpper(form.get("password"))) {
-    return json(
-      {
-        errorMessage:
-          "Your password must contain at least one Upper Case Character",
-      },
-      { statrus: 401 }
-    );
-  }
+  } 
    else if (form.get("password").trim() == form.get("repeatPassword").trim()) {
     let hash = form.get("password").trim();
     var pwd = bcrypt.hashSync(hash, 10);

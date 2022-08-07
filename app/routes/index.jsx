@@ -23,7 +23,7 @@ export async function loader({ request }) {
   //  search
   const searchQuery = url.searchParams.get("searchQuery");
   if (searchQuery != null && searchQuery != "") {
-    searchParams.title = { $regex: searchQuery };
+    searchParams.title = { $regex: searchQuery, $options: "i" };
   }
 
   // filter
@@ -56,77 +56,22 @@ export async function loader({ request }) {
     filterParams
   );
   return snippets;
-
-  // const db = await connectDb();
-  // const snippets = await db.models.Snippet.find({
-  //   userId: session.get("userId"),
-  // }).populate("userId");
-  // console.log(snippets);
-  // return json({ userId: session.get("userId"), snippets });
-  // //return snippets;
 }
-// export async function loader({ request }) {
 
-// // categories
-// const category = url.searchParams.get("category");
-// var searchParams = {};
-// if (category != null && category != "") {
-//   searchParams.language = category;
-// }
-
-// //  search
-// const searchQuery = url.searchParams.get("searchQuery");
-// if (searchQuery != null && searchQuery != "") {
-//   searchParams.title = { $regex: searchQuery };
-// }
-
-// // filter
-
-// const filter = url.searchParams.get("filter_selector");
-// let filterParams = {};
-
-// if (filter != null && filter != "") {
-//   if (filter == "title_az") {
-//     //  sort title a-z
-//     filterParams = { title: 1 };
-//   }
-//   if (filter == "title_za") {
-//     //  sort title a-z
-//     filterParams = { title: -1 };
-//   }
-
-//   if (filter == "last_updated") {
-//     //  sort by updated
-//     // searchParams.sort({date: 1});
-//     filterParams = { date: -1 };
-//   }
-//   if (filter == "fav") {
-//     //  view favourite
-//     searchParams.favourite = true;
-//   }
-// }
-
-// const snippets = await db.models.CodeSnippet.find(
-//   searchParams
-// ).sort(filterParams);
-
-// return json({ userId: session.get("userId"), snippets });
-
-//return snippets;
-//}
 
 export default function Index() {
   var snippets = useLoaderData();
   const [toggle, setToggle] = useState(false);
   const handleClick = (e) => setToggle(!toggle);
+  // eslint-disable-next-line no-lone-blocks
   {
     console.log("snippets ", snippets);
   }
   if (snippets.length != 0) {
     return (
-      <div id="content-section">
+      <div id="content-section" >
         <body className=" text-snippet-white-0 font-light font-roboto bg-snippet-dark-0 ">
-          <main className=" w-screen h-screen relative">
+          <main className=" w-screen h-screen relative ">
             <div className="mobile-menu md:hidden absolute z-50 top-4 left-5 ">
               <MobileMenu toggle={toggle} handleClick={handleClick} />
             </div>
@@ -187,7 +132,7 @@ export default function Index() {
     return (
       <div id="content-section">
         <body className=" text-snippet-white-0 font-light font-roboto bg-snippet-dark-0 ">
-          <main className=" w-screen h-screen relative">
+          <main className=" w-full h-screen relative">
             <div className="mobile-menu md:hidden absolute z-50 top-4 left-5 ">
               <MobileMenu toggle={toggle} handleClick={handleClick} />
             </div>
@@ -219,7 +164,7 @@ export default function Index() {
                 className="flex  w-full md:hidden absolute top-0   z-40 h-full  bg-snippet-dark-0 transition-all duration-500"
               >
                 <CategoryList />
-                <div lassName="flex m-0 justify-around content-around pt-40">
+                <div className="flex m-0 justify-around content-around pt-40">
                   <h1 className="m-10  p-5 flex-col text-2xl content-center justify-center  text-center ">
                     There is no snippets yet
                   </h1>
@@ -230,7 +175,7 @@ export default function Index() {
                 <CategoryList />
               </div>
 
-              <div lassName="flex m-0 justify-around content-around pt-40">
+              <div className="flex m-0 justify-around content-around pt-40">
                 <h1 className="m-10  p-5 flex-col text-2xl content-center justify-center  text-center ">
                   There is no snippets yet
                 </h1>

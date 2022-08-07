@@ -43,7 +43,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className=" text-snippet-white-0 font-light font-roboto bg-snippet-dark-0 ">
+      <body className=" text-snippet-white-0 font-light font-roboto bg-snippet-dark-0 overflow-x-hidden">
         <header className="border-b-2">
           <section id="main">
             <h2 className="text-center text-white mt-3 mb-2 text-2xl font-bold">

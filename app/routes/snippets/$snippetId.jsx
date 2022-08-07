@@ -36,10 +36,14 @@ export async function action({ request }) {
 }
 
 export default function Index() {
-  async function copyToClipboard() {
-    var copyText = document.getElementById("codeBox");
-    var data = copyText.innerHTML;
-    await navigator.clipboard.writeText(data);
+  async function copyToClipboard(TextToCopy) {
+    var TempText = document.createElement("textarea");
+    TempText.value = TextToCopy;
+    document.body.appendChild(TempText);
+    TempText.select();
+
+    document.execCommand("copy");
+    document.body.removeChild(TempText);
   }
 
   const snippet = useLoaderData();
@@ -63,15 +67,15 @@ export default function Index() {
 
           <div className="p-5 rounded-xl flex w-[95%] bg-snippet-emerald h-full shadow-inner shadow-gray-900 mb-20 ">
             <pre className=" w-full break-words whitespace-pre-wrap ">
-              <code>{snippet.code_snippet}</code>
+              <code id="texttocopy">{snippet.code_snippet}</code>
             </pre>
 
             <div className=" ml-auto w-[5%] h-full flex justify-end items-start ">
               <button
                 onClick={() => {
-                  copyToClipboard();
+                  copyToClipboard(snippet.code_snippet);
                 }}
-                className="ml-5 font-medium hover:cursor-pointer "
+                className="ml-5 font-medium hover:cursor-pointer copy"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

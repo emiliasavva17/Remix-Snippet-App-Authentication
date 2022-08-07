@@ -1131,20 +1131,6 @@ select {
   color: rgb(33 33 33 / var(--tw-text-opacity));
 }
 
-.text-snippet-emerald-light {
-  color: 098A88;
-}
-
-.text-snippet-emerald {
-  --tw-text-opacity: 1;
-  color: rgb(26 96 95 / var(--tw-text-opacity));
-}
-
-.text-teal-700 {
-  --tw-text-opacity: 1;
-  color: rgb(15 118 110 / var(--tw-text-opacity));
-}
-
 .underline {
   -webkit-text-decoration-line: underline;
           text-decoration-line: underline;
